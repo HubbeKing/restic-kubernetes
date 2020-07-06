@@ -6,7 +6,8 @@
         - kubernetes PVC backed by NFS or hostPath
         - Supported restic storage (see restic documentation, s3/b2/etc)
 
-- For restores, a simple restic/restic:latest initContainer can be used
+- For restores, a simple initContainer based on https://hub.docker.com/r/restic/restic can be used
+    - For this, it's sufficient to run a single `restic restore` command - see https://restic.readthedocs.io/en/stable/050_restore.html
 
 ## Usage
 
