@@ -19,7 +19,7 @@ if [ $repo_status != 0 ]; then
 fi
 
 echo "${BACKUP_CRON} /backup.sh >> /var/log/cron.log 2>&1" > /var/spool/cron/crontabs/root
-echo "${CHECK_CRON} ionice -c ${IONICE_CLASS} -n ${IONICE_PRIO} restic check >> /var/log/cron.log 2>&1" >> /var/spool/cron/crontabs/root
+echo "${CHECK_CRON} /check.sh >> /var/log/cron.log 2>&1" >> /var/spool/cron/crontabs/root
 
 # ensure file exists, default CMD is to tail this file
 touch /var/log/cron.log

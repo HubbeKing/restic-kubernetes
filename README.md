@@ -19,6 +19,7 @@
     - CHECK_CRON: cron expression for backup integrity checks (defaults to 00 04 * * 1)
     - RESTIC_FORGET_ARGS: arguments for restic forget command (defaults to --keep-last 7)
         - if set to "", no restic forget command is ever run
+    - NICE_ADJUST: nice priority adjustment, defaults to 10 for ~50% CPU time of normal-priority process
     - IONICE_CLASS: ionice scheduling class, defaults to 2 for best-effort IO
     - IONICE_PRIO: ionice priority, defaults to 7 for lowest priority IO
         - ionice is used for `restic backup`, `restic forget` and `restic check` commands

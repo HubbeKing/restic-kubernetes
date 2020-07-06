@@ -3,7 +3,7 @@
 echo "Starting backup at $(date +"%Y-%m-%d %H:%M:%S")"
 start=`date +%s`
 
-ionice -c ${IONICE_CLASS} -n ${IONICE_PRIO} restic backup ${BACKUP_SOURCE}
+nice -n ${NICE_ADJUST} ionice -c ${IONICE_CLASS} -n ${IONICE_PRIO} restic backup ${BACKUP_SOURCE}
 BACKUP_RESULT=$?
 if [[ $BACKUP_RESULT != 0 ]]; then
     echo "Backup failed with status ${BACKUP_RESULT}"
@@ -12,7 +12,7 @@ if [[ $BACKUP_RESULT != 0 ]]; then
 fi
 
 if [ -n "${RESTIC_FORGET_ARGS}" ]; then
-    ionice -c ${IONICE_CLASS} -n ${IONICE_PRIO} restic forget ${RESTIC_FORGET_ARGS}
+    nice -n ${NICE_ADJUST} ionice -c ${IONICE_CLASS} -n ${IONICE_PRIO} restic forget ${RESTIC_FORGET_ARGS}
     FORGET_RESULT=$?
     if [[ $FORGET_RESULT != 0 ]]; then
         echo "Snapshot pruning failed with status ${FORGET_RESULT}"
