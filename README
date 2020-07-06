@@ -1,0 +1,9 @@
+### Simple restic image for kubernetes
+
+- Meant to be added as sidecar container in kubernetes deployment, statefulset, or daemonset
+- Used for backing up kubernetes PVC/PV data to some form of external storage
+    - External storage can be:
+        - kubernetes PVC backed by NFS or hostPath
+        - Supported restic storage (see restic documentation, s3/b2/etc)
+
+- For restores, a simple restic/restic:latest initContainer can be used
