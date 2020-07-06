@@ -11,14 +11,16 @@
 ## Usage
 
 - Set environment variables for container as follows:
-    - BACKUP_SOURCE: folder to be backed up
-    - RESTIC_REPOSITORY: folder for restic repository (backup storage location)
+    - BACKUP_SOURCE: folder to be backed up (defaults to /data)
+    - RESTIC_REPOSITORY: folder for restic repository (backup storage location, defaults to /repo)
     - RESTIC_PASSWORD: password for restic repository
     - BACKUP_CRON: cron expression for backup timing (defaults to 00 */24 * * *)
     - CHECK_CRON: cron expression for backup integrity checks (defaults to 00 04 * * 1)
     - RESTIC_FORGET_ARGS: arguments for restic forget command (defaults to --keep-last 7)
         - if set to "", no restic forget command is ever run
-
+    - IONICE_CLASS: ionice scheduling class, defaults to 2 for best-effort IO
+    - IONICE_PRIO: ionice priority, defaults to 7 for lowest priority IO
+        - ionice is used for `restic backup`, `restic forget` and `restic check` commands
 - Occationally check container logs to see backup results
 
 ### TODO
