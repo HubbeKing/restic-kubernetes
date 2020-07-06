@@ -4,7 +4,7 @@
 - Used for backing up kubernetes PVC/PV data to some form of external storage
     - External storage can be:
         - kubernetes PVC backed by NFS or hostPath
-        - Supported restic storage (see restic documentation, s3/b2/etc)
+        - Supported restic storage (S3, B2, etc) - see restic documentation, https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html
 
 - For restores, a simple initContainer based on https://hub.docker.com/r/restic/restic can be used
     - For this, it's sufficient to run a single `restic restore` command - see https://restic.readthedocs.io/en/stable/050_restore.html
